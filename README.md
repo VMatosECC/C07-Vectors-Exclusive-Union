@@ -6,7 +6,9 @@ Assume v1 and v2 are vectors holding integer values (vector<int>). As an example
     vector<int> v2 { 22, 33, 77 };
     
 You are asked to write the function 
+    
 vector<int> exclusiveUnion(vector<int> v1, vector<int> v2);
+    
 to calculate the result of the exclusive union of the incoming vectors v1 and v2. 
 The function must return a vector<int> holding the solution.
 
