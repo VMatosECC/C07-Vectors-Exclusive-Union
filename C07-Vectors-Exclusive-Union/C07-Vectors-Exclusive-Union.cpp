@@ -8,6 +8,7 @@ using namespace std;
 //Prototypes
 int  countOccurrences(vector<int> v, int key);
 void showVector(vector<int> v, string msg);
+
 vector<int> commonElements(vector<int> v1, vector<int> v2);
 vector<int> exclusiveUnion(vector<int> v1, vector<int> v2);
 // -----------------------------------------------------------------
@@ -29,6 +30,28 @@ int main()
 }
 
 // -----------------------------------------------------------------
+
+//Output: Elements that belong exclusively to either v1 or v2
+vector<int> exclusiveUnion(vector<int> v1, vector<int> v2)
+{
+    vector<int> vresult;
+    for (int i = 0; i < v1.size(); i++)
+    {
+        if (countOccurrences(vresult, v1[i]) == 0
+            &&
+            countOccurrences(v2, v1[i]) == 0)
+            vresult.push_back(v1[i]);
+    }
+    for (int i = 0; i < v2.size(); i++)
+    {
+        if (countOccurrences(vresult, v2[i]) == 0
+            &&
+            countOccurrences(v1, v2[i]) == 0)
+            vresult.push_back(v2[i]);
+    }
+
+    return vresult;
+}
 
 //How many times the key value appears in vector v?
 int countOccurrences(vector<int> v, int key)
@@ -68,26 +91,4 @@ void showVector(vector<int> v, string msg)
         cout << v[i] << ", ";
     }
     cout << endl;
-}
-
-//Output: Elements that belong exclusively to either v1 or v2
-vector<int> exclusiveUnion(vector<int> v1, vector<int> v2)
-{
-    vector<int> vresult;
-    for (int i = 0; i < v1.size(); i++)
-    {
-        if (countOccurrences(vresult, v1[i]) == 0
-            &&
-            countOccurrences(v2, v1[i]) == 0)
-            vresult.push_back(v1[i]);
-    }
-    for (int i = 0; i < v2.size(); i++)
-    {
-        if (countOccurrences(vresult, v2[i]) == 0
-            &&
-            countOccurrences(v1, v2[i]) == 0)
-            vresult.push_back(v2[i]);
-    }
-
-    return vresult;
 }
